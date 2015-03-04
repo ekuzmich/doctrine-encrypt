@@ -147,7 +147,6 @@ class DoctrineEncryptSubscriber implements EventSubscriber
                 // we have annotation and if it decrypt operation, we must avoid duble decryption
                 $refProperty->setAccessible(true);
                 $value = $refProperty->getValue($entity);
-                if (empty($value)) continue;
                 
                 $value = $this->encryptor->$encryptorMethod($value);
                 $refProperty->setValue($entity, $value);
